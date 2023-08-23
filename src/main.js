@@ -1,38 +1,23 @@
-import { createApp } from "vue";
-import { createRouter, createWebHistory } from "vue-router";
+import { createApp } from 'vue'
 
-import App from "./App.vue";
-import MainComponent from "./components/main/MainComponent.vue";
-import NavBar from "./components/commons/NavBar.vue";
-import LoginComponent from "./components/login/LoginComponent.vue";
-import RegisterComponent from "./components/register/RegisterComponent.vue";
-import HistoryComponent from "./components/history/HistoryComponent.vue";
+import App from './App.vue'
+import router from './router'
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    {
-      path: "/",
-      component: MainComponent,
-    },
-    {
-      path: "/login",
-      component: LoginComponent,
-    },
-    {
-      path: "/register",
-      component: RegisterComponent,
-    },
-    {
-      path: "/history",
-      component: HistoryComponent,
-    },
-  ],
-});
+import store from './store/index.js'
 
-const app = createApp(App);
-app.use(router);
+import NavBar from './components/NavBar.vue'
+import ModelCard from './components/ModelCard.vue'
+import Loader from './components/Loader.vue'
+import DisplayAnalysisCard from './components/DisplayAnalysisCard.vue'
 
-app.component("nav-bar", NavBar);
+const app = createApp(App)
 
-app.mount("#app");
+app.use(router)
+app.use(store)
+
+app.component('nav-bar', NavBar)
+app.component('model-card', ModelCard)
+app.component('loader', Loader)
+app.component('display-analysis-card', DisplayAnalysisCard)
+
+app.mount('#app')
